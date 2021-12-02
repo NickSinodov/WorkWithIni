@@ -74,7 +74,7 @@ void AddNewSection::slotAddNameSection()
         msgBox.exec();
         return;
     }
-
+    emit sectionAdded();
     /*
     if(!m_contentNewSection.m_keyValueNewSection.isEmpty())
     {

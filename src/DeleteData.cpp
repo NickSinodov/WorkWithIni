@@ -279,6 +279,7 @@ void DeleteData::slotDeleteData()
     QFile file(m_ptrContentIni->m_pathFile);
     file.open(QIODevice::WriteOnly | QIODevice::Truncate);
     file.close();
+    emit fileIsEmpty();
     close();
 }
 
@@ -287,6 +288,7 @@ void DeleteData::slotDeleteFile()
     QFile file(m_ptrContentIni->m_pathFile);
     file.remove();
     m_ptrContentIni->m_pathFile.clear();
+    emit fileDeleted();
     close();
 }
 

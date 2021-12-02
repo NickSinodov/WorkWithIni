@@ -26,6 +26,8 @@ private slots:
     void slotAddCommentSection();
     void slotAddInMap();
     void slotWriteInFile();
+signals:
+    void sectionAdded();
 };
 
 #endif // ADDNEWSECTION_H

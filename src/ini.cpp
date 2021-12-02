@@ -29,6 +29,9 @@ Ini::Ini(QWidget *parent): QWidget(parent), ui(new Ui::Ini)
     connect(ui->pushButtonChangeContentSection, SIGNAL(clicked()),                SLOT(slotChangeData()));
     connect(m_file,                             SIGNAL(FileAnalized()),     this, SLOT(setOnOffButton()));
     connect(m_newFile,                          SIGNAL(emptyFileCreated()), this, SLOT(setOnOffButton()));
+    connect(m_dataForDelete,                    SIGNAL(fileIsEmpty()),      this, SLOT(setOnOffButton()));
+    connect(m_dataForDelete,                    SIGNAL(fileDeleted()),      this, SLOT(setOnOffButton()));
+    connect(m_newSection,                       SIGNAL(sectionAdded()),     this, SLOT(setOnOffButton()));
 }
 
 void Ini::setOnOffButton()

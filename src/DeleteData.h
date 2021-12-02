@@ -29,6 +29,9 @@ private slots:
     void slotDeleteComment();
     void slotDeleteData();
     void slotDeleteFile();
+signals:
+    void fileIsEmpty();
+    void fileDeleted();
 };
 
 #endif // DELETEDATA_H
