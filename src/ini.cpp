@@ -3,23 +3,32 @@
 
 Ini::Ini(QWidget *parent): QWidget(parent), ui(new Ui::Ini)
 {
-    m_file.m_ptrContentIni          = &m_contentIni;
-    m_newFile.m_ptrContentIni       = &m_contentIni;
-    m_rangeSections.m_ptrContentIni = &m_contentIni;
-    m_oneSection.m_ptrContentIni    = &m_contentIni;
-    m_newSection.m_ptrContentIni    = &m_contentIni;
-    m_dataForDelete.m_ptrContentIni = &m_contentIni;
-    m_dataForChange.m_ptrContentIni = &m_contentIni;
+    m_file          = new ChooseFile;
+    m_newFile       = new PathNewFile;
+    m_rangeSections = new ShowRangeSections;
+    m_oneSection    = new ShowOneSection;
+    m_newSection    = new AddNewSection;
+    m_dataForDelete = new DeleteData;
+    m_dataForChange = new ChangeData;
+    m_file->m_ptrContentIni          = &m_contentIni;
+    m_newFile->m_ptrContentIni       = &m_contentIni;
+    m_rangeSections->m_ptrContentIni = &m_contentIni;
+    m_oneSection->m_ptrContentIni    = &m_contentIni;
+    m_newSection->m_ptrContentIni    = &m_contentIni;
+    m_dataForDelete->m_ptrContentIni = &m_contentIni;
+    m_dataForChange->m_ptrContentIni = &m_contentIni;
     ui->setupUi(this);
-    connect(ui->pushButtonChooseFile,           SIGNAL(clicked()), SLOT(slotChooseFile()));
-    connect(ui->pushButtonCreateFile,           SIGNAL(clicked()), SLOT(slotCreateFile()));
-    connect(ui->pushButtonShowAll,              SIGNAL(clicked()), SLOT(slotShowAllData()));
-    connect(ui->pushButtonShowRangeSections,    SIGNAL(clicked()), SLOT(slotShowRangeSections()));
-    connect(ui->pushButtonShowOneSection,       SIGNAL(clicked()), SLOT(slotShowOneSection()));
-    connect(ui->pushButtonAddNewSection,        SIGNAL(clicked()), SLOT(slotAddNewSection()));
-    connect(ui->pushButtonDeleteData,           SIGNAL(clicked()), SLOT(slotDeleteData()));
-    connect(ui->pushButtonChangeContentSection, SIGNAL(clicked()), SLOT(slotChangeData()));
-
+    setOnOffButton();
+    connect(ui->pushButtonChooseFile,           SIGNAL(clicked()),                SLOT(slotChooseFile()));
+    connect(ui->pushButtonCreateFile,           SIGNAL(clicked()),                SLOT(slotCreateFile()));
+    connect(ui->pushButtonShowAll,              SIGNAL(clicked()),                SLOT(slotShowAllData()));
+    connect(ui->pushButtonShowRangeSections,    SIGNAL(clicked()),                SLOT(slotShowRangeSections()));
+    connect(ui->pushButtonShowOneSection,       SIGNAL(clicked()),                SLOT(slotShowOneSection()));
+    connect(ui->pushButtonAddNewSection,        SIGNAL(clicked()),                SLOT(slotAddNewSection()));
+    connect(ui->pushButtonDeleteData,           SIGNAL(clicked()),                SLOT(slotDeleteData()));
+    connect(ui->pushButtonChangeContentSection, SIGNAL(clicked()),                SLOT(slotChangeData()));
+    connect(m_file,                             SIGNAL(FileAnalized()),     this, SLOT(setOnOffButton()));
+    connect(m_newFile,                          SIGNAL(emptyFileCreated()), this, SLOT(setOnOffButton()));
 }
 
 void Ini::setOnOffButton()
@@ -55,12 +64,12 @@ void Ini::setOnOffButton()
 
 void Ini::slotChooseFile()
 {
-    m_file.show();
+    m_file->show();
 }
 
 void Ini::slotCreateFile()
 {
-    m_newFile.show();
+    m_newFile->show();
 }
 
 void Ini::slotShowAllData()
@@ -72,33 +81,33 @@ void Ini::slotShowAllData()
 
 void Ini::slotShowRangeSections()
 {
-    m_rangeSections.getRange();
-    m_rangeSections.show();
+    m_rangeSections->getRange();
+    m_rangeSections->show();
 }
 
 void Ini::slotShowOneSection()
 {
-    m_oneSection.getRange();
-    m_oneSection.show();
+    m_oneSection->getRange();
+    m_oneSection->show();
 }
 
 void Ini::slotAddNewSection()
 {
-    m_newSection.clear();
-    m_newSection.show();
+    m_newSection->clear();
+    m_newSection->show();
 }
 
 void Ini::slotDeleteData()
 {
-    m_dataForDelete.getRange();
-    m_dataForDelete.show();
+    m_dataForDelete->getRange();
+    m_dataForDelete->show();
     setOnOffButton();
 }
 
 void Ini::slotChangeData()
 {
-    m_dataForChange.getRange();
-    m_dataForChange.show();
+    m_dataForChange->getRange();
+    m_dataForChange->show();
 }
 
 Ini::~Ini()

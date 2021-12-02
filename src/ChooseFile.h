@@ -15,7 +15,7 @@ public:
     explicit ChooseFile(QWidget *parent = nullptr);
     ~ChooseFile();
 signals:
-    void done();
+    void FileAnalized();
 public:
     StorageContentIni *m_ptrContentIni;
     Ui::ChooseFile    *ui;

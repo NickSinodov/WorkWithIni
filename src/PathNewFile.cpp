@@ -58,6 +58,7 @@ void PathNewFile::slotChoosePath()
     QFile file(m_ptrContentIni->m_pathFile);
     file.open(QIODevice::WriteOnly);
     file.close();
+    emit emptyFileCreated();
     close();
 }
 

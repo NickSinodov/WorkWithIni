@@ -28,6 +28,8 @@ private:
     QString            m_pathNewFile;
 private slots:
     void slotChoosePath();
+signals:
+    void emptyFileCreated();
 };
 
 #endif // PATHNEWFILE_H

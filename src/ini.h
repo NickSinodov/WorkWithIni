@@ -28,13 +28,13 @@ public:
 
 private:
     StorageContentIni m_contentIni;
-    ChooseFile        m_file;
-    PathNewFile       m_newFile;
-    ShowRangeSections m_rangeSections;
-    ShowOneSection    m_oneSection;
-    AddNewSection     m_newSection;
-    DeleteData        m_dataForDelete;
-    ChangeData        m_dataForChange;
+    ChooseFile        *m_file;
+    PathNewFile       *m_newFile;
+    ShowRangeSections *m_rangeSections;
+    ShowOneSection    *m_oneSection;
+    AddNewSection     *m_newSection;
+    DeleteData        *m_dataForDelete;
+    ChangeData        *m_dataForChange;
     Ui::Ini *ui;
 
 public slots:

@@ -49,6 +49,7 @@ void ChooseFile::slotAnalyzeFile()
     }
     ui->plainTextEdit->insertPlainText(("The end of an analyze.\n"));
     ui->treeView->collapseAll();
+    emit FileAnalized();
     close();
 }
 
