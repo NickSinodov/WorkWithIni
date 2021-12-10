@@ -203,6 +203,8 @@ void AddNewSection::slotWriteInFile()
         ui->pushButtonAddCommentSection->setEnabled(true);
         ui->lineEditKey->clear();
         ui->showAddedSection->clear();
+        ui->nameSection->setReadOnly(false);
+        ui->commentSection->setReadOnly(false);
     }
 }
 
